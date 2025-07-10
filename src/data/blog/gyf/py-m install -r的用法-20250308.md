@@ -1,3 +1,20 @@
+---
+title: py-m install -r的用法-20250308
+author: 郭岩峰
+description: 介绍 py -m 和 pip install -r 的用法，讲解 Python 包管理、虚拟环境、依赖批量安装等常见开发技巧。
+pubDatetime: 2025-03-08T00:00:00Z
+slug: py-m-install-r-usage-20250308
+tags:
+  - Python
+  - 包管理
+  - pip
+  - 虚拟环境
+  - 依赖安装
+ogImage: ""
+featured: false
+draft: false
+---
+
 `py -m` 是 **Python 解释器** 的一种用法，它的作用是 **以模块的方式运行 Python 包或模块**，类似于 `python -m`，但 `py -m` 在 Windows 上更通用，能够自动匹配正确的 Python 版本。
 
 ------

@@ -1,3 +1,20 @@
+---
+title: 3Dpet项目构想
+author: 郭岩峰
+description: 构建基于 Web 的 3D 虚拟宠物互动平台，涵盖用户饲养、定制、实时交互、商城与社交等核心功能，技术方案详尽。
+pubDatetime: 
+slug: 3dpet-project-idea
+tags:
+  - 3D
+  - 虚拟宠物
+  - Web平台
+  - 技术方案
+  - 互动
+ogImage: ""
+featured: false
+draft: false
+---
+
 # 构建基于 Web 的 3D 虚拟宠物互动平台，支持用户饲养、定制、实时交互宠物，结合商城与社交功能提升沉浸感。
 
 时序图

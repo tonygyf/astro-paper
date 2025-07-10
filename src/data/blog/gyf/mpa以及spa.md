@@ -1,3 +1,20 @@
+---
+title: mpa以及spa
+author: 郭岩峰
+description: 解析 MPA（多页应用）与 SPA（单页应用）的区别，结合 Spring Boot 与 Vue 前后端分离开发模式进行详细说明。
+pubDatetime: 
+slug: mpa-vs-spa
+tags:
+  - MPA
+  - SPA
+  - 前后端分离
+  - Spring Boot
+  - Vue
+ogImage: ""
+featured: false
+draft: false
+---
+
 ### **第一个问题：Spring Boot 后端是否不需要 HTML 页面？**
 
 是的，**如果你的项目是前后端分离的，Spring Boot 只提供 API，前端（如 Vue、React）渲染页面**，那么 **后端是不需要提供 HTML 页面** 的。
