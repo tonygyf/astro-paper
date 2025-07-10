@@ -2,7 +2,7 @@
 title: mpa以及spa
 author: 郭岩峰
 description: 解析 MPA（多页应用）与 SPA（单页应用）的区别，结合 Spring Boot 与 Vue 前后端分离开发模式进行详细说明。
-pubDatetime: 
+pubDatetime: 2025-03-08T00:00:00Z
 slug: mpa-vs-spa
 tags:
   - MPA
