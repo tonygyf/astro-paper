@@ -19,11 +19,11 @@ draft: false
 
 时序图
 
-![image-20250319182857490](@assets/images/image-20250319182857490.png)
+![image-20250319182857490](../../../assets/images/image-20250319182857490.png)
 
 er图
 
-![image-20250319182923693](@assets/images/image-20250319182923693.png)
+![image-20250319182923693](../../../assets/images/image-20250319182923693.png)
 
 功能需求：
 
@@ -56,18 +56,18 @@ er图
 
 项目dfd
 
-![image-20250319185406850](@assets/images/image-20250319185406850.png)
+![image-20250319185406850](../../../assets/images/image-20250319185406850.png)
 
 项目类图
 
-![image-20250319190038290](@assets/images/image-20250319190038290.png)
+![image-20250319190038290](../../../assets/images/image-20250319190038290.png)
 
 项目用例图
 
 
 
 有意思的来了，在使用vue时，在vite.config.ts这个文件里会出现报错，
-![image-20250319195925530](@assets/images/image-20250319195925530.png)
+![image-20250319195925530](../../../assets/images/image-20250319195925530.png)
 
 但是实际上，这一部分是用于解决 `__dirname` 在 ES 模块 (`type: "module"`) 中不可用的问题：
 
