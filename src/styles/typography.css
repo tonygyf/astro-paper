@@ -89,6 +89,11 @@
     pre {
       @apply focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-dashed;
     }
+
+    /* Katex text color */
+    .katex-display {
+      @apply text-foreground;
+    }
   }
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
