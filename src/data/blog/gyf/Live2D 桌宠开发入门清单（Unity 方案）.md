@@ -1,7 +1,7 @@
 ---
 title: "Live2D 桌面宠物 学习开发计划：从模型到Unity实现"
 author: "gyf"
-pubDate: "2025-08-21"
+pubDatetime: 2025-08-21T00:00:00Z
 slug: "live2d-desktop-pet-unity-learning-plan"
 tags: ["Live2D", "Unity", "桌面宠物", "AI辅助", "Cubism SDK", "学习计划"]
 description: "Live2D桌面宠物学习开发计划：基于Unity+Live2D Cubism SDK，AI辅助模型创作，从入门到进阶的详细步骤与Live2D核心技术解析"
