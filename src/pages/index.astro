@@ -12,6 +12,7 @@ import IconRss from "@/assets/icons/IconRss.svg";
 import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
 import { SITE } from "@/config";
 import { SOCIALS } from "@/constants";
+import { projects } from "@/data/projects";
 
 const posts = await getCollection("blog");
 
@@ -55,7 +56,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         </LinkButton> 
         获取更多信息。
       </p>
-      {
+
+
+    {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
           <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
@@ -69,13 +72,35 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     <Hr />
 
     {
+      projects.length > 0 && (
+        <section id="projects" class="pt-12 pb-6">
+          <h2 class="text-2xl font-semibold tracking-wide">我的作品集</h2>
+          <ul class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.slice(0, 3).map(project => (
+              <Card
+                href={project.link}
+                title={project.title}
+                secHed={project.description}
+                img={project.image}
+              />
+            ))}
+          </ul>
+          <LinkButton href="/projects" class="mt-4 inline-block">
+            查看所有作品 <IconArrowRight class="inline-block w-4 h-4 ms-1" />
+          </LinkButton>
+        </section>
+        <Hr />
+      )
+    }
+
+    {
       featuredPosts.length > 0 && (
         <>
           <section id="featured" class="pt-12 pb-6">
             <h2 class="text-2xl font-semibold tracking-wide">精选文章</h2>
             <ul>
-              {featuredPosts.map(data => (
-                <Card variant="h3" {...data} />
+              {featuredPosts.map(post => (
+                <Card variant="h3" {...post} />
               ))}
             </ul>
           </section>
@@ -90,8 +115,8 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           <h2 class="text-2xl font-semibold tracking-wide">最新文章</h2>
           <ul>
             {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
+              (post, index) =>
+                index < SITE.postPerIndex && <Card variant="h3" {...post} />
             )}
           </ul>
         </section>

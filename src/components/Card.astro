@@ -3,26 +3,67 @@ import { slugifyStr } from "@/utils/slugify";
 import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
+import LinkButton from "./LinkButton.astro";
+import IconGitHub from "@/assets/icons/IconGitHub.svg";
+import { SOCIALS } from "@/constants";
 
-export interface Props extends CollectionEntry<"blog"> {
+interface BlogPostProps extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
 }
 
-const { variant = "h2", data, id, filePath } = Astro.props;
+interface ProjectCardProps {
+  href: string;
+  title: string;
+  secHed: string;
+  img?: string;
+  variant?: "h2" | "h3";
+}
 
-const { title, description, pubDatetime, modDatetime, timezone } = data;
+type Props = BlogPostProps | ProjectCardProps;
+
+const props = Astro.props;
+
+let title: string;
+let description: string;
+let href: string;
+let pubDatetime: Date | undefined;
+let modDatetime: Date | undefined;
+let timezone: string | undefined;
+let img: string | undefined;
+let variant: "h2" | "h3" = "h3";
+let viewTransitionName: string;
+
+if ("data" in props) {
+  // It's a blog post
+  const { data, id, slug, variant: blogVariant } = props;
+  title = data.title;
+  description = data.description;
+  href = getPath(id, data.file);
+  pubDatetime = data.pubDatetime;
+  modDatetime = data.modDatetime;
+  timezone = data.timezone;
+  variant = blogVariant || "h3";
+  viewTransitionName = slug;
+} else {
+  // It's a project card
+  const { href: projectHref, title: projectTitle, secHed, img: projectImg, variant: projectVariant } = props;
+  title = projectTitle;
+  description = secHed;
+  href = projectHref;
+  img = projectImg;
+  variant = projectVariant || "h3";
+  viewTransitionName = title;
+}
 
 const headerProps = {
-  style: { viewTransitionName: slugifyStr(title) },
-  class: "text-lg font-medium decoration-dashed hover:underline",
+  style: { viewTransitionName: viewTransitionName },
+  className: "text-lg font-medium hover:underline decoration-dashed underline-offset-4",
 };
+
 ---
 
 <li class="my-6">
-  <a
-    href={getPath(id, filePath)}
-    class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-  >
+  <div class="flex justify-between items-center">
     {
       variant === "h2" ? (
         <h2 {...headerProps}>{title}</h2>
@@ -30,7 +71,18 @@ const headerProps = {
         <h3 {...headerProps}>{title}</h3>
       )
     }
-  </a>
-  <Datetime {pubDatetime} {modDatetime} {timezone} />
+    {!("data" in props) && href && (
+      <LinkButton
+        href={href}
+        class="p-2 hover:rotate-6 sm:p-1"
+        title="GitHub Link"
+      >
+        <IconGitHub class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
+        <span class="sr-only">GitHub Link</span>
+      </LinkButton>
+    )}
+  </div>
+  {img && <img src={img} alt={title} class="w-full h-48 object-cover my-2" />}
+  {pubDatetime && <Datetime {pubDatetime} {modDatetime} {timezone} />}
   <p>{description}</p>
 </li>

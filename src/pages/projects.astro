@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Card from "@/components/Card.astro";
+import { projects } from "@/data/projects";
+---
+
+<Layout title="作品集">
+  <Header />
+  <main id="main-content" data-layout="projects">
+    <section class="pt-8 pb-6">
+      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
+        我的作品集
+      </h1>
+      <p>这里展示了我的一些项目和作品。</p>
+    </section>
+
+    <section class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        projects.map(project => (
+          <Card
+            href={project.link}
+            title={project.title}
+            secHed={project.description}
+            img={project.image}
+          />
+        ))
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>
