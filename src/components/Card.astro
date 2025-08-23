@@ -37,7 +37,7 @@ if ("data" in props) {
   const { data, id, variant: blogVariant } = props;
   title = data.title;
   description = data.description;
-  href = getPath(id); // ✅ 不要用 data.file
+  href = `/posts/${getPath(id)}`; // ✅ 不要用 data.file
   pubDatetime = data.pubDatetime;
   modDatetime = data.modDatetime ?? undefined;
   timezone = data.timezone;
@@ -63,13 +63,15 @@ const headerProps = {
 
 <li class="my-6">
   <div class="flex justify-between items-center">
-    {
-      variant === "h2" ? (
-        <h2 {...headerProps}>{title}</h2>
-      ) : (
-        <h3 {...headerProps}>{title}</h3>
-      )
-    }
+    <a href={href} class="group inline-block hover:text-accent">
+      {
+        variant === "h2" ? (
+          <h2 {...headerProps}>{title}</h2>
+        ) : (
+          <h3 {...headerProps}>{title}</h3>
+        )
+      }
+    </a>
     {!("data" in props) && href && (
       <LinkButton
         href={href}

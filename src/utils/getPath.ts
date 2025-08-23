@@ -10,14 +10,11 @@ import { slugifyStr } from "./slugify";
  */
 export function getPath(
   id: string,
-  filePath?: string, // kept for compatibility
-  includeBase: boolean = true
+  filePath?: string // kept for compatibility
 ) {
-  const basePath = includeBase ? "/posts" : "";
-
   // Making sure `id` does not contain the directory
   const blogId = id.split("/");
   const slug = blogId.length > 0 ? blogId.slice(-1) : blogId;
 
-  return [basePath, slug].join("/");
+  return slug.join("/");
 }
