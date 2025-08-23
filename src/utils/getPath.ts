@@ -1,5 +1,4 @@
 import { BLOG_PATH } from "@/content.config";
-import { slugifyStr } from "./slugify";
 
 /**
  * Get full path of a blog post
@@ -10,7 +9,7 @@ import { slugifyStr } from "./slugify";
  */
 export function getPath(
   id: string,
-  filePath: string | undefined,
+  filePath?: string,
   includeBase = true
 ) {
   const pathSegments = filePath
