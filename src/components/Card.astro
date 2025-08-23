@@ -5,7 +5,6 @@ import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
 import LinkButton from "./LinkButton.astro";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
-import { SOCIALS } from "@/constants";
 
 interface BlogPostProps extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
@@ -35,15 +34,15 @@ let viewTransitionName: string;
 
 if ("data" in props) {
   // It's a blog post
-  const { data, id, slug, variant: blogVariant } = props;
+  const { data, id, variant: blogVariant } = props;
   title = data.title;
   description = data.description;
   href = getPath(id, data.file);
   pubDatetime = data.pubDatetime;
-  modDatetime = data.modDatetime;
+  modDatetime = data.modDatetime ?? undefined;
   timezone = data.timezone;
   variant = blogVariant || "h3";
-  viewTransitionName = slug;
+  viewTransitionName = id;
 } else {
   // It's a project card
   const { href: projectHref, title: projectTitle, secHed, img: projectImg, variant: projectVariant } = props;
