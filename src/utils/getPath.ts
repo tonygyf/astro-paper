@@ -8,10 +8,7 @@ import { BLOG_PATH } from "@/content.config";
 
  * @returns blog post path
  */
-export function getPath(
-  id: string,
-  filePath: string
-) {
-  // Making sure `id` does not contain the directory
+export function getPath(id?: string, filePath?: string): string {
+  if (!filePath) return ''; // filePath 为空时返回空路径
   return filePath.split(".md")[0];
 }
